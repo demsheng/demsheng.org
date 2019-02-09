@@ -1,0 +1,71 @@
+baseURL = "https://demsheng.github.io/"
+languageCode = "en-US"
+defaultContentLanguage = "zh-cn"
+
+title = "李长圣"
+theme = "hugo-theme-learn"
+themesdir = "./themes"
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir= true
+
+[params]
+  editURL = "https://github.com/demsheng/demsheng.org/edit/master/content/"
+  description = "李长圣的个人主页"
+  author = "李长圣"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  # When using mulitlingual website, disable the switch language button.
+  disableLanguageSwitchingButton = true
+  
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+
+[Languages]
+[Languages.zh-cn]
+[[Languages.zh-cn.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bookmark'></i> Hugo 文档"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 10
+
+[[Languages.zh-cn.menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> 网站主题"
+identifier = "ds"
+url = "https://github.com/matcornic/hugo-theme-learn"
+weight = 20
+
+[[Languages.zh-cn.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bullhorn'></i> 致谢"
+url = "/credits"
+weight = 30
+
+
+[Languages.en]
+title = "Documentation for Hugo Learn Theme"
+weight = 1
+languageName = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-fw fa-github'></i> Github repo"
+identifier = "ds"
+url = "https://github.com/matcornic/hugo-theme-learn"
+weight = 10
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-camera'></i> Showcases"
+url = "showcase"
+weight = 11
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bookmark'></i> Hugo Documentation"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bullhorn'></i> Credits"
+url = "/credits"
+weight = 30
+

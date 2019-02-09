@@ -1,0 +1,11 @@
+# hugo output directory
+public/
+# GMT related files
+*.ps
+gmt.history
+gmt.conf
+.resources
+themes/dot-hugo-documentation-theme/
+themes/hugo-theme-den/
+themes/hugo-w3-simple/
+themes/resources/
