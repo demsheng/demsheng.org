@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/demsheng/demsheng.org.svg?branch=master)](https://travis-ci.org/demsheng/demsheng.org)
 
-Li Changsheng Home Page 李长圣的个人主页
+李长圣的个人主页
 
 ## 测试中
 
