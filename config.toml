@@ -1,4 +1,5 @@
-baseURL = "http://lichangsheng.geovbox.com/"
+#https://demsheng.github.io/demsheng.org/
+baseURL = "https://lichangsheng.geovbox.com/"
 languageCode = "en-US"
 defaultContentLanguage = "zh-cn"
 
