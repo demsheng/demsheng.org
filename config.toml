@@ -7,7 +7,7 @@ title = "李长圣"
 theme = "hugo-theme-learn"
 themesdir = "./themes"
 metaDataFormat = "yaml"
-defaultContentLanguageInSubdir= true
+defaultContentLanguageInSubdir= false
 
 [params]
   editURL = "https://github.com/demsheng/demsheng.org/edit/master/content/"
@@ -25,6 +25,12 @@ home = [ "HTML", "RSS", "JSON"]
 
 [Languages]
 [Languages.zh-cn]
+[[Languages.zh-cn.menu.shortcuts]]
+name = "<i class='fas fa-fw fa-bookmark'></i> VBOX官网"
+identifier = "vboxweb"
+url = "https://geovbox.com/"
+weight = 9
+
 [[Languages.zh-cn.menu.shortcuts]]
 name = "<i class='fas fa-fw fa-bookmark'></i> Hugo 文档"
 identifier = "hugodoc"
