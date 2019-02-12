@@ -1,6 +1,6 @@
-# https://lichangsheng.geovbox.com
+# https://sheng.geovbox.com
 
-[![Build Status](https://travis-ci.org/demsheng/demsheng.org.svg?branch=master)](https://travis-ci.org/demsheng/demsheng.org)
+[![Build Status](https://travis-ci.org/demsheng/sheng.geovbox.com.svg?branch=master)](https://travis-ci.org/demsheng/sheng.geovbox.com)
 
 李长圣的个人主页
 
