@@ -6,7 +6,6 @@ disableToc: true
 ## 致谢
 
 
-<!--{{% ghcontributors "https://api.github.com/repos/matcornic/hugo-theme-learn/contributors?per_page=100" %}}-->
 
 And a special thanks to [@vjeantet](https://github.com/vjeantet) for his work on [docdock](https://github.com/vjeantet/hugo-theme-docdock), a fork of hugo-theme-learn. v2.0.0 of this theme is inspired by his work.
 
