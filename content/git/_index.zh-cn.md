@@ -1,5 +1,5 @@
 ---
-title: Git学习笔记
+title: Git笔记
 weight: 4
 pre: "<b></b>"
 ---

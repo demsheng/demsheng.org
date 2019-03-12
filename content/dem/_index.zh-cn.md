@@ -1,5 +1,5 @@
 ---
-title: 离散元开发
+title: 离散元
 weight: 3
 pre: "<b></b>"
 ---

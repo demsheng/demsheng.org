@@ -1,6 +1,6 @@
 ---
-title: 南大博士毕业材料
-weight: 4
+title: 博士毕业材料
+weight: 6
 pre: "<b></b>"
 ---
 
