@@ -15,3 +15,22 @@ pre: "<b></b>"
 `du -sm` [文件夹] 返回该文件夹总M数  
 `du -h` [目录名] 查看指定文件夹下的所有文件大小（包含子文件夹）  
 
+
+
+#### 添加用户
+```bash
+adduser -g vbox zhangsan #添加用户
+passwd zhangsan  # 修改密码
+rocks sync users # 同步账户信息，新建用户后必须同步后才生效，如果失败，重启再试
+```
+
+#### 删除用户
+```
+userdel -r zhangsan # 删除用户，包括家目录
+rocks sync users
+```
+#### 修改用户名
+```
+usermod  -l  新用户名  -d  /home/新用户名  -m  老用户名
+rocks sync users
+```
