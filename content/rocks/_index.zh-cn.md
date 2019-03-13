@@ -1,5 +1,5 @@
 ---
-title: 集群建设
+title: 集群管理
 weight: 1
 pre: "<b></b>"
 ---
@@ -12,3 +12,4 @@ pre: "<b></b>"
 * [重启集群]({{%relref "reboot/_index.zh-cn.md" %}})
 * [修改家目录]({{%relref "ch_home/_index.zh-cn.md" %}})
 * [共享主节点磁盘]({{%relref "share/_index.zh-cn.md" %}})
+* [自动备份]({{%relref "auto_backup/_index.zh-cn.md" %}})
