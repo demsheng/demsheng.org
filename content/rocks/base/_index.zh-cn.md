@@ -16,7 +16,6 @@ pre: "<b></b>"
 `du -h` [目录名] 查看指定文件夹下的所有文件大小（包含子文件夹）  
 
 
-
 #### 添加用户
 ```bash
 adduser -g vbox zhangsan #添加用户

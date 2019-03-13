@@ -1,6 +1,6 @@
 ---
 title: 共享主节点磁盘
-weight: 5
+weight: 6
 pre: "<b></b>"
 ---
 
