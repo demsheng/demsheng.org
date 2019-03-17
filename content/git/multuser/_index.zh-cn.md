@@ -1,7 +1,7 @@
 ---
 date: 2019-02-12
 title: 多个git账号的登录与切换
-weight: 1
+weight: 2
 ---
 
 Ref [https://blog.csdn.net/qq_36602939/article/details/79794686](https://blog.csdn.net/qq_36602939/article/details/79794686)
