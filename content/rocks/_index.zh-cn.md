@@ -13,3 +13,5 @@ pre: "<b></b>"
 * [修改家目录]({{%relref "ch_home/_index.zh-cn.md" %}})
 * [共享主节点磁盘]({{%relref "share/_index.zh-cn.md" %}})
 * [自动备份]({{%relref "auto_backup/_index.zh-cn.md" %}})
+* [ssh]({{%relref "ssh/_index.zh-cn.md" %}})
+* [SGE]({{%relref "SGE/_index.zh-cn.md" %}})
