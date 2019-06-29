@@ -32,6 +32,7 @@ usermod  -l  新用户名  -d  /home/新用户名  -m  老用户名
 rocks sync users
 ```
 
+
 - 权限管理
 `ll` 显示的内容如下：
 ```
