@@ -4,6 +4,12 @@ weight: 9
 pre: "<b></b>"
 ---
 
++ `qstat -u \*` 查看所有任务
+
++ `qstat -f`    查看所有计算节点任务占用情况
+
++ `qsub  -l h=sand-0-0 sge.sh` 把 sge.sh 提交到 sand-0-0 节点
+
 + 任务一直 `qw` 状态，首先登录子节点，启动服务
 	```
 	cd $SGE_ROOT/default/common/
