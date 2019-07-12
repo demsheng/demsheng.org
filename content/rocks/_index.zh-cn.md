@@ -15,3 +15,5 @@ pre: "<b></b>"
 * [自动备份]({{%relref "auto_backup/_index.zh-cn.md" %}})
 * [ssh]({{%relref "ssh/_index.zh-cn.md" %}})
 * [SGE]({{%relref "SGE/_index.zh-cn.md" %}})
+* [设置用户密码使用期限]({{%relref "chpw/_index.zh-cn.md" %}})
+* [IP]({{%relref "ip/_index.zh-cn.md" %}})
