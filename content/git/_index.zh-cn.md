@@ -20,4 +20,5 @@ pre: "<b></b>"
 	git mv -f content/rocks/advance/ content/rocks/share`
 	```
 	
-* 修改 Git 远程仓库地址 `gedit .git/config` 
+* 修改 Git 远程仓库地址 `gedit .git/config`
+* [修改默认端口号]({{%relref "port/_index.zh-cn.md" %}})

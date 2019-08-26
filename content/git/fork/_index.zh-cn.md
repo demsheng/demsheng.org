@@ -1,7 +1,7 @@
 ---
 date: 2019-02-12
 title: fork后，更新到原作者的主分支
-weight: 20
+weight: 3
 ---
 
 Github上 fork了别人的代码 本地更新主分支代码
