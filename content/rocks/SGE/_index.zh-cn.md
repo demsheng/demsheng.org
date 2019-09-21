@@ -86,14 +86,16 @@ pre: "<b></b>"
 + **重启**
 
 	- `[centos]:`
-	```
-	cd $SGE_ROOT/default/common/
-	sudo ./sgemaster start
-	sudo ./sgeexecd start
-	```
+	
+		```
+		cd $SGE_ROOT/default/common/
+		sudo ./sgemaster start
+		sudo ./sgeexecd start
+		```
+		
 	- `[linux]:`
-	```
-	sudo /etc/init.d/gridengine-exec stop
-	```
+		```
+		sudo /etc/init.d/gridengine-exec stop
+		```
 	
 	

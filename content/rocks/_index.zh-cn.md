@@ -17,3 +17,4 @@ pre: "<b></b>"
 * [SGE]({{%relref "SGE/_index.zh-cn.md" %}})
 * [设置用户密码使用期限]({{%relref "chpw/_index.zh-cn.md" %}})
 * [IP]({{%relref "ip/_index.zh-cn.md" %}})
+* [登录进入bash]({{%relref "login/_index.zh-cn.md" %}})
