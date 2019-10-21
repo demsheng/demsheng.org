@@ -4,6 +4,7 @@ weight: 10
 pre: "<b></b>"
 ---
 
+[参考](`https://blog.csdn.net/attend_/article/details/79025172`)
 
 + `ifconfig` 查看IP地址
 
@@ -59,12 +60,29 @@ pre: "<b></b>"
 	DEVICE=em2
 	HWADDR=43:21:32:43:21:32 
 	IPADDR=114.123.123.123  #设置的静态IP地址
-	NETMASK=255.255.255.0   #
+	NETMASK=255.255.255.0   #子网掩码
 	BOOTPROTO=static        #静态IP
 	ONBOOT=yes              #启用该网口
 	MTU=1500
 	```
 
++ 重启网络 `service network restart` 
+
+
++ 实例 东华理工大学 并行计算实验室
+
+	外网 `vi /etc/sysconfig/network-scripts/ifcfg-eth1`
+	
+	```
+	DEVICE=eth1
+	TYPE=Bridge
+	IPADDR=AAA.BBB.CCC.150
+	NETMASK=255.255.255.0
+	GATEWAY=AAA.BBB.CCC.1
+	BOOTPROTO=static
+	ONBOOT=yes
+	MTU=1500
+	```
 
 
 

@@ -18,3 +18,4 @@ pre: "<b></b>"
 * [设置用户密码使用期限]({{%relref "chpw/_index.zh-cn.md" %}})
 * [IP]({{%relref "ip/_index.zh-cn.md" %}})
 * [登录进入bash]({{%relref "login/_index.zh-cn.md" %}})
+* [rocks 重装]({{%relref "rocks_install/_index.zh-cn.md" %}})
