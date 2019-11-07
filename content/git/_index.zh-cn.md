@@ -21,4 +21,20 @@ pre: "<b></b>"
 	```
 	
 * 修改 Git 远程仓库地址 `gedit .git/config`
+```
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote "origin"]
+        fetch = +refs/heads/*:refs/remotes/origin/*
+        #设置使用哪个远程库
+        url = ssh://li_changsheng@ip:1234/home/vpost.git
+#       url = https://github.com/demsheng/vpost.git
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+```
+
 * [修改默认端口号]({{%relref "port/_index.zh-cn.md" %}})
