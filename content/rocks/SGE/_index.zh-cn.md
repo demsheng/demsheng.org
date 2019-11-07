@@ -19,6 +19,7 @@ pre: "<b></b>"
 
 	- 情况二：SGE未添加集群队列  
 	SGE部署参考 http://www.chenlianfu.com/?p=2441
+	并行环境设置 http://blog.chinaunix.net/uid-24404943-id-3480812.html
 
 		1. (不确定是否需要重新安装SGE) ，安装方法见 http://gridscheduler.sourceforge.net/CompileGridEngineSource.html
 			
