@@ -1,6 +1,6 @@
 ---
 title: 登录进入bash
-weight: 12
+weight: 13
 pre: "<b></b>"
 ---
 

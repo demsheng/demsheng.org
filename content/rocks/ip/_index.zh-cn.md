@@ -1,6 +1,6 @@
 ---
 title: IP配置
-weight: 10
+weight: 12
 pre: "<b></b>"
 ---
 
