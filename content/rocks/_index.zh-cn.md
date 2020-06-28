@@ -1,6 +1,6 @@
 ---
 title: 集群管理
-weight: 1
+weight: 2
 pre: "<b></b>"
 ---
 

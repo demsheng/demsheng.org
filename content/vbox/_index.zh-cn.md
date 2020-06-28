@@ -8,18 +8,16 @@ VBOX正式发布前，功能体验。
 
 ## 应力应变处理
 
-处理应力应变，需要按照如下步骤做预处理，之后把 `datass` 文件夹和 `jpg` 文件发我
+处理应力应变，需要按照如下步骤做预处理，之后把 `datass` 文件夹和 `jpg` 文件发给李长圣.
 
 
-1. vboxdaily 计算，将生成./data文件夹
-```
-vboxdaily push.py
-```
+1. `vboxdaily push.py` 
 
-2. 生成jpg，生成计算过程图．注意：这里，只需指定--dir，不加其它任何参数．
-```
-vbox2jpg --dir=./data
-```
+    vboxdaily 计算，将生成 ./data 文件夹
+
+2. `vbox2jpg --dir=./data` 
+    
+    生成jpg，生成计算过程图．注意：这里，只需指定 `--dir` ，不加其它任何参数．
 
 3. 新建datass文件夹，根据jpg挑选需要计算应力应变的.dat文件，复制到datass文件夹中。
 
@@ -37,38 +35,37 @@ vbox2jpg --dir=./data
          - all_0000036001.dat
          - all_0000058000.dat
 
-4. 用vboxdaily将dat转换文件格式为.out，供GMT绘图用。注意：基于步骤2，我们知道 `--xmove --ymove` 应该设置为多少．
+4. `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 -s ./datass` 
+
+    用vboxdaily将dat转换文件格式为.out，供GMT绘图用。注意：基于步骤2，我们知道 `--xmove --ymove` 应该设置为多少．参数解释：
+
     ```
-    vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 -s ./datass
-    ```
-    参数解释：
-    ```
-	-s, --strain-stress  DataDir
-		计算应力应变
-		从DataDir读取数据，将应力应变输出到DataDir/ss目录
-	--xmove X
-		配合-s选项，设置模型x方向偏移位移X，默认0.0。
-	--ymove Y
-		配合-s选项，设置模型y方向偏移位移Y，默认0.0。
-	-g, --grid SIZE
-		配合-s选项，设置应力应变计算时候，网格的大小SIZE，默认200.0
-	--leftwallid ID
-			设置左边墙ID，该墙左边颗粒均会被删除。如果颗粒被挤出到左边墙之外需要设置该参数。
-	--rightwallid ID
-		设置右边墙ID，该墙右边颗粒均会被删除。如果颗粒被挤出到右边墙之外需要设置该参数。
+    -s, --strain-stress  DataDir
+	    计算应力应变
+	    从DataDir读取数据，将应力应变输出到DataDir/ss目录
+    --xmove X
+	    配合-s选项，设置模型x方向偏移位移X，默认0.0。
+    --ymove Y
+	    配合-s选项，设置模型y方向偏移位移Y，默认0.0。
+    -g, --grid SIZE
+	    配合-s选项，设置应力应变计算时候，网格的大小SIZE，默认200.0
+    --leftwallid ID
+	    配合-s选项，设置左边墙ID，该墙左边颗粒均会被删除。如果颗粒被挤出到左边墙之外需要设置该参数。
+    --rightwallid ID
+	    配合-s选项，设置右边墙ID，该墙右边颗粒均会被删除。如果颗粒被挤出到右边墙之外需要设置该参数。
     ```
 
-5. 没有沉积剥蚀，跳过改步。如果有沉积剥蚀，需要遍历所有文件，正确搜索删除沉积颗粒的位移，为每个.out生成.out-
-```
-vboxsspre --dir=./datass
-```
-(后续版本将合并到第二步)
+5. `vboxsspre --dir=./datass` (正式发布将合并到第4步)
 
-6. 使用GMT绘制应力应变 `vboxss --dir =./datass` (待发布！)
-把datass文件夹和jpg文件发我，我使用GMT绘制应力应变图把datass文件夹和jpg文件发我，我使用GMT绘制应力应变图
+    * **如果没有沉积剥蚀，跳过改步。**　
+    * 如果有沉积剥蚀，需要遍历所有文件，识别剥蚀和沉积的颗粒，正确计算位移，为每个 `.out` 生成 `.out-` 
+
+6. `vboxss --dir=./datass` (未发布！现在，需要把 datass 文件夹和 jpg 文件发给李长圣等待处理结果) 
+
+    使用GMT绘制应力应变. 
 
 
-### 总结
+### 提交计算
 
 挑选完dat文件后，可用下文的　`lsf2.sh` 提交计算
 
@@ -81,9 +78,9 @@ vboxsspre --dir=./datass
 
 <img src="strainstressShear250.png" width="500" />
 <img src="all0000108000.jpg" title=""  width="500" />
-<center>all0000108000.jpg</center>
+<center><h5>处理结果示意图</h5></center>
 
-目录结构
+目录结构：
 
 ```
 |-- ex1
@@ -91,15 +88,9 @@ vboxsspre --dir=./datass
     |-- lsf2.sh
     |-- push.py
     |-- data
-        |-- landscape
-        |-- .gitignore
-        |-- Gruntfile.js
-        |-- LICENSE
         |--  all_0000000000_ini.dat
         |--  all_0000001000.dat    
-        |--  all_0000002000.dat    
-        |--  all_0000003000.dat    
-        |--  all_0000004000.dat    
+        |--  ...    
         |--  all_0000005000.dat    
         |--  all_0000005000_ini.dat
         |--  all_0000006000.dat    
@@ -112,23 +103,7 @@ vboxsspre --dir=./datass
         |--  all_0000056000.dat    
         |--  all_0000056000_ini.dat
         |--  all_0000056100.dat    
-        |--  all_0000056200.dat    
-        |--  all_0000056300.dat    
-        |--  all_0000056400.dat    
-        |--  all_0000056500.dat    
-        |--  all_0000056600.dat    
-        |--  all_0000056700.dat    
-        |--  all_0000056800.dat    
-        |--  all_0000056900.dat    
-        |--  all_0000057000.dat    
-        |--  all_0000057100.dat    
-        |--  all_0000057200.dat    
-        |--  all_0000057300.dat    
-        |--  all_0000057400.dat    
-        |--  all_0000057500.dat    
-        |--  all_0000057600.dat    
-        |--  all_0000057700.dat    
-        |--  all_0000057800.dat    
+        |--  ...
         |--  all_0000057900.dat    
         |--  all_0000058000.dat    
         |--  all_0000058000_ini.dat
@@ -148,7 +123,7 @@ vboxsspre --dir=./datass
         |-- all_0000108000.dat
 ```
 
-其中，
+文件内容：
 
 `lsf1.sh`
 
@@ -179,15 +154,10 @@ vboxsspre --dir=./datass
 ```
 ######################################
 # title: 一个实例学会VBOX 加入剥蚀 沉积 演示应力应变处理过程
-# date: 2019-01-13
+# date: 2020-06-28
 # authors: 李长圣
 # E-mail: sheng0619@163.com
-# note:
-# 括号内参数可根据模型大小及个人需要修改
-# 脚本命令不区分大小写
-# 用16个核心，实际用时<1小时
-# 计算费用约<2元
-# more info, see www.geovbox.com
+# www.geovbox.com
 #######################################
 #程序初始化
 START
