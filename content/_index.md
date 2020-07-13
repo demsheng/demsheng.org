@@ -4,8 +4,6 @@ title: "主页"
 
 # 个人主页
 
-{{< figure src="LiChangSheng.png" title=""  width="150px" >}}
-
 
 VBOX开发者 [https://geovbox.com](https://geovbox.com)
 
