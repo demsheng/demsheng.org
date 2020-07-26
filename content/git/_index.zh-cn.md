@@ -9,12 +9,14 @@ pre: "<b></b>"
 * [搭建Git服务器 ]({{%relref "init/_index.zh-cn.md" %}})
 * [多个git账号的登录与切换]({{%relref "multuser/_index.zh-cn.md" %}})
 * [fork后，更新到原作者的主分支]({{%relref "fork/_index.zh-cn.md" %}})
+* [修改默认端口号]({{%relref "port/_index.zh-cn.md" %}})
+* [彻底删除文件]({{%relref "rm/_index.zh-cn.md" %}})
 * 设置用户 
 	```
 	git config --global user.name "geovbox"
 	git config --global user.email "geovbox@163.com"
 	```
-	
+
 * 重命名文件夹/文件 
 	```
 	git mv -f content/rocks/advance/ content/rocks/share`
@@ -37,4 +39,10 @@ pre: "<b></b>"
         merge = refs/heads/master
 ```
 
-* [修改默认端口号]({{%relref "port/_index.zh-cn.md" %}})
+* 放弃本地修改，直接覆盖之
+```
+git fetch --all
+git reset --hard origin/master
+```
+
+
