@@ -30,14 +30,11 @@ VBOX正式发布前，功能体验。
     - 沉积稳定，准备挤压前的模型。all_0000058000_ini.dat
         ![alt all_0000058000_ini.dat](all_0000058000_ini.jpg "all_0000036000_ini.dat")
     - 沉积过程不要，其它的可酌情选取。
-    - 注意:　这里选好dat后，将它们复制到datass文件夹中，文件名中_ini需要去掉．上面三个文件可以改为　
-         - all_0000006000.dat
-         - all_0000036001.dat
-         - all_0000058000.dat
 
-4. `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 -s ./datass` 
 
-    用vboxdaily将dat转换文件格式为.out，供GMT绘图用。注意：基于步骤2，我们知道 `--xmove --ymove` 应该设置为多少．参数解释：
+4. `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 --addball --delball -s ./datass` 
+
+    用vboxdaily将dat转换文件格式为.out，供GMT绘图用。注意：基于步骤2，我们知道 `--xmove --ymove` 应该设置为多少．如果有沉积`--addball`或者剥蚀`--delball`过程，需添加相应参数．参数解释：
 
     ```
     -s, --strain-stress  DataDir
@@ -53,14 +50,15 @@ VBOX正式发布前，功能体验。
 	    配合-s选项，设置左边墙ID，该墙左边颗粒均会被删除。如果颗粒被挤出到左边墙之外需要设置该参数。
     --rightwallid ID
 	    配合-s选项，设置右边墙ID，该墙右边颗粒均会被删除。如果颗粒被挤出到右边墙之外需要设置该参数。
+    --addball 
+		配合-s选项，应力应变计算过程中，有新颗粒加入体系（沉积）,默认关闭。
+	--delball 
+		配合-s选项，应力应变计算过程中，删除了颗粒（剥蚀），默认关闭。
     ```
 
-5. `vboxsspre --dir=./datass` (正式发布将合并到第4步)
-
-    * **如果没有沉积剥蚀，跳过改步。**　
-    * 如果有沉积剥蚀，需要遍历所有文件，识别剥蚀和沉积的颗粒，正确计算位移，为每个 `.out` 生成 `.out-` 
-
-6. `vboxss --dir=./datass` (未发布！现在，需要把 datass 文件夹和 jpg 文件发给李长圣等待处理结果) 
+    
+    
+5. `vboxss --dir=./datass` (未发布！现在，需要把 datass 文件夹和 jpg 文件发给李长圣等待处理结果) 
 
     使用GMT绘制应力应变. 
 
@@ -113,12 +111,11 @@ VBOX正式发布前，功能体验。
         |--  all_0000098000.dat    
         |--  all_0000108000.dat    
     |-- datass
-        |-- all_0000006000.dat
+        |-- all_0000006000_ini.dat
         |-- all_0000026000.dat
-        |-- all_0000036000.dat
-        |-- all_0000036001.dat
+        |-- all_0000036000_ini.dat
         |-- all_0000056000.dat
-        |-- all_0000058000.dat
+        |-- all_0000058000_ini.dat
         |-- all_0000078000.dat
         |-- all_0000108000.dat
 ```
@@ -135,7 +132,7 @@ VBOX正式发布前，功能体验。
 #BSUB -n 24
 #BSUB -R "span[ptile=24]"
 vboxdaily push.py
-vbox2jpg --dir=./data   
+vbox2jpg -j 24 --dir=./data   
 convert -delay 100 ./data/*[0-9].jpg -loop 0 ./data/process.gif   
 ```
 
@@ -144,10 +141,11 @@ convert -delay 100 ./data/*[0-9].jpg -loop 0 ./data/process.gif
 ```
 #!/bin/bash
 #
-#BSUB -J sheng
-#BSUB -q serial
-vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 -s ./datass
-vboxsspre --dir=./datass 
+#BSUB -J stress
+#BSUB -q mpi
+#BSUB -n 24
+#BSUB -R "span[ptile=24]"
+vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 -j 24　--leftwallid 1 --addball --delball　-s ./datass
 ```
 
 `push.py`
