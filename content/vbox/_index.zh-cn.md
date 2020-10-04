@@ -11,18 +11,14 @@ VBOX正式发布前，功能体验。
 处理应力应变，需要按照如下步骤做预处理，之后把 `datass` 文件夹和 `jpg` 文件发给李长圣.
 
 
-1. `vboxdaily push.py` 
-
+1. `vboxdaily push.py`   
     vboxdaily 计算，将生成 ./data 文件夹
-
-2. `vbox2jpg --dir=./data` 
     
+2. `vbox2jpg --dir=./data`   
     生成jpg，生成计算过程图．注意：这里，只需指定 `--dir` ，不加其它任何参数．
-
-3. 新建datass文件夹，根据jpg挑选需要计算应力应变的.dat文件，复制到datass文件夹中。
-
+    
+3. 新建datass文件夹，根据jpg挑选需要计算应力应变的.dat文件，复制到datass文件夹中。  
     这里，挑选原则如下：
-
     - 刚沉积完，并给定颜色，准备挤压的初始模型，必须。all_0000006000_ini.dat
         ![alt all_0000006000_ini.dat](all_0000006000_ini.jpg "all_0000006000_ini.dat")
     - 刚剥蚀完，准备挤压的模型，必须。all_0000036000_ini.dat
@@ -30,12 +26,9 @@ VBOX正式发布前，功能体验。
     - 沉积稳定，准备挤压前的模型。all_0000058000_ini.dat
         ![alt all_0000058000_ini.dat](all_0000058000_ini.jpg "all_0000036000_ini.dat")
     - 沉积过程不要，其它的可酌情选取。
-
-
-4. `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 --addball --delball -s ./datass` 
-
+    
+4. `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 --addball --delball -s ./datass`  
     用vboxdaily将dat转换文件格式为.out，供GMT绘图用。注意：基于步骤2，我们知道 `--xmove --ymove` 应该设置为多少．如果有沉积`--addball`或者剥蚀`--delball`过程，需添加相应参数．参数解释：
-
     ```
     -s, --strain-stress  DataDir
 	    计算应力应变
@@ -55,13 +48,87 @@ VBOX正式发布前，功能体验。
 	--delball 
 		配合-s选项，应力应变计算过程中，删除了颗粒（剥蚀），默认关闭。
     ```
-
     
-    
-5. `vboxss --dir=./datass` (未发布！现在，需要把 datass 文件夹和 jpg 文件发给李长圣等待处理结果) 
+5. `vboxss --dir ./datass` 使用GMT绘制应力应变  
+    - 添加 `gmt` 环境变量  
+        把以下内容添加到　`~/.bashrc` 文件尾，  
+     ` vi ~/.bashrc`  
 
-    使用GMT绘制应力应变. 
+        ```
+        export GMT5HOME=/share/home/hwyin/lib/gmt/gmt545
+        export PATH=${GMT5HOME}/bin:$PATH
+        export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${GMT5HOME}/lib64
+        ```
+    - 使用方法  
+        `vbox` 处理完成的应力应变数据，在文件夹 `datass` 中生成 应力应变数据 `ss` 。  
+        在 `ex1` 文件夹中输入：
+        ```
+        vboxss --dir ./datass
+        ```
+        有沉积剥蚀事件：
+        ```
+        vboxss --dir ./datass --addball ON --delball ON
+        ```
+        设置x轴最大值 40.0 km，设置y轴最大值 10.0 km，设置颜色条应力最大值400 MPa：
+        ```
+        vboxss --dir ./datass --xmax 40.0 --ymax 10.0 --maxstress 400.0
+        ```
 
+        实例目录结构：
+        ```
+        |-- ex1
+            |-- lsf1.sh
+            |-- lsf2.sh
+            |-- push.py
+            |-- data
+                |--  all_0000000000_ini.dat
+                |--  ...    
+                |--  all_0000005000.dat    
+                |--  all_0000058000_ini.dat
+                |--  all_0000108000.dat    
+            |-- datass
+                |--ss
+                   |-- data
+                       |-- *.out
+                |-- all_0000006000_ini.dat
+                |-- all_0000026000.dat
+        ```
+
+        运行完成之后， `ss` 目录结构如下
+
+        ```
+                |-- ss
+                    |-- data
+                        |-- *.out
+                    |-- ps
+                       |-- *.ps
+                    |-- Tmp
+                        |-- *.grd
+                    |-- *.jpg
+        ```
+
+        - `data` 应力应变原始数据
+        - `ps`  输出的应力应变图(矢量图)
+        - `tmp` 计算应力应变产生的中间数据
+        - `*.jpg` **输出的应力应变图(位图)**
+
+    - 参数说明：
+
+        * `--addball ON/OFF`  有沉积事件，默认OFF
+        * `--delball ON/OFF`   有剥蚀事件，默认OFF
+        * `-d, --dir`   设置数据所在目录
+        * `-h, --help`  打印帮助信息
+        * `--showcolorbar ON/OFF`   绘制颜色条，默认ON
+        * `--showlable ON/OFF/abc`  绘制颜色条，默认OFF，其中abc只给子图命名为abc
+        * `--stressshear ON/OFF`  绘制剪切应力，默认ON
+        * `--stressmean ON/OFF ` 绘制平均应力，默认ON
+        * `--strainshear ON/OFF`  绘制变形应变，默认ON
+        * `--strainvol ON/OFF ` 绘制体积应变，默认ON
+        * `--width value`  图片宽(cm)，默认14
+        * `--xmax value ` x轴最大值(km)，默认自动设置
+        * `--ymax value` y轴最大值(km)，默认自动设置
+        * `--maxstress value ` 最大应力值(MPa)，默认 300
+        * `-v, --version` 显示版本信息
 
 ### 提交计算
 
