@@ -11,6 +11,7 @@ pre: "<b></b>"
 * [fork后，更新到原作者的主分支]({{%relref "fork/_index.zh-cn.md" %}})
 * [修改默认端口号]({{%relref "port/_index.zh-cn.md" %}})
 * [彻底删除文件]({{%relref "rm/_index.zh-cn.md" %}})
+* [打标签]({{%relref "tags/_index.zh-cn.md" %}})
 * 设置用户 
 	```
 	git config --global user.name "geovbox"
