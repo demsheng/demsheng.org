@@ -8,7 +8,8 @@ VBOX正式发布前，功能体验。
 
 ## 应力应变处理
 
-处理应力应变，需要按照如下步骤做预处理，之后把 `datass` 文件夹和 `jpg` 文件发给李长圣.
+- `vboxdaily -s ./datass` 计算应力应变
+- `vboxss --dir ./datass` 绘制应力应变
 
 
 1. `vboxdaily push.py`   
@@ -27,8 +28,13 @@ VBOX正式发布前，功能体验。
         ![alt all_0000058000_ini.dat](all_0000058000_ini.jpg "all_0000036000_ini.dat")
     - 沉积过程不要，其它的可酌情选取。
     
-4. `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 --addball --delball -s ./datass`  
+4. 计算应力和应变  
+    - 无沉积和剥蚀 `vboxdaily -s ./datass`  
+    - 无沉积和剥蚀 `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 -s ./datass`   
+    - 有沉积和剥蚀 `vboxdaily --xmove -1000.0 --ymove -1000.0 -g 400 --leftwallid 1 --addball --delball -s ./datass`   
+    
     用vboxdaily将dat转换文件格式为.out，供GMT绘图用。注意：基于步骤2，我们知道 `--xmove --ymove` 应该设置为多少．如果有沉积`--addball`或者剥蚀`--delball`过程，需添加相应参数．参数解释：
+    
     ```
     -s, --strain-stress  DataDir
 	    计算应力应变
@@ -49,7 +55,10 @@ VBOX正式发布前，功能体验。
 		配合-s选项，应力应变计算过程中，删除了颗粒（剥蚀），默认关闭。
     ```
     
-5. `vboxss --dir ./datass` 使用GMT绘制应力应变  
+5. 使用GMT绘制应力应变  
+    - 无沉积和剥蚀 `vboxss --dir ./datass`    
+    - 有沉积和剥蚀 `vboxss --dir ./datass  --addball ON --delball ON`   
+
     - 添加 `gmt` 环境变量  
         把以下内容添加到　`~/.bashrc` 文件尾，  
      ` vi ~/.bashrc`  
