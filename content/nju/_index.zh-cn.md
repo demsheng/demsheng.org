@@ -1,6 +1,6 @@
 ---
 title: 博士毕业材料
-weight: 6
+weight: 8
 pre: "<b></b>"
 ---
 

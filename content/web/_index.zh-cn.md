@@ -1,6 +1,6 @@
 ---
-title: 网站建设
-weight: 5
+title: hugo网站建设
+weight: 6
 ---
 
 Hugo
