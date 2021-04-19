@@ -21,3 +21,4 @@ pre: "<b></b>"
 * [IP]({{%relref "ip/_index.zh-cn.md" %}})
 * [登录进入bash]({{%relref "login/_index.zh-cn.md" %}})
 * [rocks 重装]({{%relref "rocks_install/_index.zh-cn.md" %}})
+* [格式化8T硬盘]({{%relref "parted/_index.zh-cn.md" %}})
