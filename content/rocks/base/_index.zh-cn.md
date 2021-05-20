@@ -13,6 +13,12 @@ pre: "<b></b>"
 - `du -sm [文件夹]` 返回该文件夹总M数  
 - `du -h [目录名]` 查看指定文件夹下的所有文件大小（包含子文件夹）  
 - `gedit ~/.config/user-dirs.dirs` Ubuntu 桌面显示路径修改
+- 强制修改密码
+	1. 提升权限：su
+	2. 强制修改密码（无安全性校验）：echo '<新密码>' | passwd --stdin <用户名> ，例如：
+		```
+			echo 123456 | passwd --stdin zhangsan
+		```
 
 - 添加用户
 ```bash
