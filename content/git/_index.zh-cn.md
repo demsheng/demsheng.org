@@ -46,4 +46,10 @@ git fetch --all
 git reset --hard origin/master
 ```
 
+* 回退到某个指定的版本
+```
+git reset --hard 139dcfaa558e3276b30b6b2e5cbbb9c00bbdca96 
+```
+后面的是git提交的历史版本号， `git log` 找到复制下来就行
+
 
