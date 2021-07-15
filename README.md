@@ -1,6 +1,6 @@
 # https://sheng.geovbox.com
 
-[![Deploy](https://github.com/demsheng/sheng.geovbox.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/emsheng/sheng.geovbox.com/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/demsheng/sheng.geovbox.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/demsheng/sheng.geovbox.com/actions/workflows/deploy.yml)
 
 李长圣的个人主页
 
