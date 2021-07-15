@@ -1,10 +1,9 @@
 ---
-title: VBOX体验功能
+title: ZDEM/VBOX应力应变处理
 weight: 1
 pre: "<b></b>"
 ---
 
-VBOX正式发布前，功能体验。
 
 ## 应力应变处理
 

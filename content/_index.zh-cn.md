@@ -2,7 +2,7 @@
 title: "主页"
 ---
 
-# [VBOX开发者](https://geovbox.com)
+# [离散元数值模拟软件ZDEM开发者](https://geovbox.com)
 
 {{% notice note %}}
 本网站主要记录李长圣的 **Rocks集群管理**、**网站建设** 及　**离散元软件开发**　的经验。
@@ -35,7 +35,7 @@ OpenMP、CUDA、GUI、QT、VTK、GTK+、GTKmm、OpenGL
 
 #### 使用的软件
 
-[VBOX](https://geovbox.com)、GMT、PFC2D、FLAC3D、ANSYS
+[ZDEM、VBOX](https://geovbox.com)、GMT、PFC2D、FLAC3D、ANSYS
 
 
 
