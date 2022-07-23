@@ -10,8 +10,27 @@ pre: "<b></b>"
 singularity exec ubuntu2004.simg yade --version
 ```
 
+### 修改yade官方镜像
 
-### 构建yade的ubuntu2004.simg
+```
+singularity build yade2020.sif docker:registry.gitlab.com/yade-dev/docker-prod:ubuntu20.04
+
+#运行yade，出现以下错误，运行如下内容修复
+#ImportError: libQt5Core.so.5: cannot open shared object file: No such file or directory
+singularity build --sandbox yade2020/ yade2020.simg
+su
+singularity shell --writable ubuntu2004/
+#参考下文更新为国内源，加快下载速度
+apt-get install libqt5core5a
+strip --remove-section=.note.ABI-tag /lib/x86_64-linux-gnu/libQt5Core.so.5
+yade --version
+exit
+
+singularity build yade2020.simg yade2020/
+singularity exec ubuntu2004.simg yade --version
+```
+
+### 从ubuntu20.04镜像构建包含yade的ubuntu2004.simg
 
 - 采用系统：`centos 7.0`
 - sif 仅可读
@@ -60,7 +79,7 @@ apt install yade
 apt-get install libqt5core5a
 strip --remove-section=.note.ABI-tag /lib/x86_64-linux-gnu/libQt5Core.so.5
 #sandbox内测试
-yade version
+yade --version
 #推出sandbox
 exit
 #########################################################################
@@ -73,7 +92,7 @@ mkdir /home/lichangsheng/tmp
 su lichangsheng
 
 #5. sandbox外测试，1）本机测试，2）复制ubuntu2004.simg到centos集群，用如下命令测试
-singularity exec ubuntu2004.simg yade version
+singularity exec ubuntu2004.simg yade --version
 ```
 
 
@@ -85,21 +104,27 @@ singularity exec ubuntu2004.simg yade version
 #SBATCH --job-name=test
 #SBATCH --partition=v6_384
 #SBATCH -n 1
-#SBATCH -c 12
-#SBATCH -t 1440
+#SBATCH -c 8
+#SBATCH -t 14400
 #SBATCH --output=%j.out
 #SBATCH --error=%j.err
 
-#2022-07-19 singularity
 source /public1/soft/modules/module.sh
 module load singularity/3.5.3-wzm
-# 2022-07-21 GeoSturctLab
-export GSL=/public1/home/sc80502/bincs/singularity/GeoStructLab
+export GSL=/path/to/GeoStructLab
 
-#注意在.bashrc中配置环境变量
-#需要把yade.simg连接到ubuntu20yade2018.simg
-time srun -n 1 singularity exec  /path/to/ubuntu20yade2018.simg  yade -j12 /path/to/GeoStructLab/shear/gen.py ./mat.txt
+time srun -n 1 -c 8 singularity exec /path/to/yade2020.simg yade -n -x -j8 /path/to/script.py ./matCohFricCai2016.txt
+time srun -n 1 -c 8 singularity exec /path/to/yade2020.simg yade -n -x -j8 /path/to/script.py ./matCohFricCai2016.txt
 ```
+
+**特别注意：**
+
+- `script.py` 脚本中， 需要设置 `O.run(wait=True)` ，即不进入交互模式，一直等待计算完成。
+- `-n` 不启动GUI界面
+- `-x` 执行完 `script.py` ，即退出yade
+
+
+
 
 ### 进阶：Singularity入门之运行容器
 - https://cloud.tencent.com/developer/article/1478616
