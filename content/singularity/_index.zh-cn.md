@@ -96,7 +96,7 @@ singularity exec ubuntu2004.simg yade --version
 ```
 
 
-### 北京并行超算云中使用 `ubuntu2004.simg`
+### `slurm` 北京并行超算云中使用 `ubuntu20yade2018.simg`
 - 直接运行 `srun -n 1 -c 12 singularity exec /path/to/ubuntu20yade2018.simg  yade -j12 /path/to/GeoStructLab/shear/gen.py ./mat.txt`
 - 采用 `Slurm` 提交计算 `sbatch job.sh`
 ```
@@ -113,8 +113,36 @@ source /public1/soft/modules/module.sh
 module load singularity/3.5.3-wzm
 export GSL=/path/to/GeoStructLab
 
+#singularity exec /path/to/ubuntu20yade2018.simg yade --version
+#time singularity exec /path/to/ubuntu20yade2018.simg yade -n -x -j8 /path/to/scripty.py
+
 time srun -n 1 -c 8 singularity exec /path/to/yade2020.simg yade -n -x -j8 /path/to/script.py ./matCohFricCai2016.txt
-time srun -n 1 -c 8 singularity exec /path/to/yade2020.simg yade -n -x -j8 /path/to/script.py ./matCohFricCai2016.txt
+```
+**特别注意：**
+
+- `script.py` 脚本中， 需要设置 `O.run(wait=True)` ，即不进入交互模式，一直等待计算完成。
+- `-n` 不启动GUI界面
+- `-x` 执行完 `script.py` ，即退出yade
+
+### `LSF` 南京大学高性能计算中心使用 `ubuntu20yade2018.simg`
+- 直接运行 `singularity exec /path/to/ubuntu20yade2018.simg  yade -j12 /path/to/scripy.py`
+- 采用 `LSF` 提交计算 `bsub < lsf.sh`
+```
+#!/bin/bash
+#
+#BSUB -J cs
+#BSUB -q mpi
+#BSUB -n 24
+#BSUB -R "span[ptile=24]"
+
+# for singularity
+export PATH=/opt/singularity-3.7.0/bin:$PATH
+export LD_LIBRARY_PATH=/opt/singularity-3.7.0/lib/singularity:$LD_LIBRARY_PATH
+export MANPATH=$MANPATH:/opt/singularity/3.7.0/share/man
+
+#singularity exec /path/to/ubuntu20yade2018.simg yade --version
+
+time singularity exec /path/to/ubuntu20yade2018.simg yade -n -x -j24 /path/to/scripty.py
 ```
 
 **特别注意：**
