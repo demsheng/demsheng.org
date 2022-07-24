@@ -98,7 +98,7 @@ singularity exec ubuntu2004.simg yade --version
 
 ### `slurm` 北京并行超算云中使用 `ubuntu20yade2018.simg`
 - 直接运行 `srun -n 1 -c 12 singularity exec /path/to/ubuntu20yade2018.simg  yade -j12 /path/to/GeoStructLab/shear/gen.py ./mat.txt`
-- 采用 `Slurm` 提交计算 `sbatch job.sh`
+- 采用 `Slurm` 提交计算 `sbatch job.sh` , `job.sh` 中内容参考：
 ```
 #!/bin/bash
 #SBATCH --job-name=test
@@ -126,7 +126,7 @@ time srun -n 1 -c 8 singularity exec /path/to/yade2020.simg yade -n -x -j8 /path
 
 ### `LSF` 南京大学高性能计算中心使用 `ubuntu20yade2018.simg`
 - 直接运行 `singularity exec /path/to/ubuntu20yade2018.simg  yade -j12 /path/to/scripy.py`
-- 采用 `LSF` 提交计算 `bsub < lsf.sh`
+- 采用 `LSF` 提交计算 `bsub < lsf.sh` ， `lsf.sh` 中内容参考：
 ```
 #!/bin/bash
 #
@@ -142,7 +142,7 @@ export MANPATH=$MANPATH:/opt/singularity/3.7.0/share/man
 
 #singularity exec /path/to/ubuntu20yade2018.simg yade --version
 
-time singularity exec /path/to/ubuntu20yade2018.simg yade -n -x -j24 /path/to/scripty.py
+time singularity exec /path/to/ubuntu20yade2018.simg yade -n -x -j24 /path/to/script.py
 ```
 
 **特别注意：**
