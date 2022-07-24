@@ -1,0 +1,36 @@
+[
+{
+	"uri": "https://sheng.geovbox.com/en/web/",
+	"title": "网站建设",
+	"tags": [],
+	"description": "",
+	"content": "Hugo\nSphinx\n"
+},
+{
+	"uri": "https://sheng.geovbox.com/en/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://sheng.geovbox.com/en/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://sheng.geovbox.com/en/",
+	"title": "主页",
+	"tags": [],
+	"description": "",
+	"content": "VBOX开发者  李长圣@个人简历 李长圣@GitHub 李长圣@ResearchGate  个人标签 高性能计算、网站建设、集群管理、软件开发、数值模拟、构造模拟、岩土、地质\n研究兴趣  2019-现在　 主要做三维离散元并行计算（CPU/GPU）、软件开发、岩土体及构造相关的数值模拟。   博士期间　 开发了用于构造变形研究的高性能二维离散元数值模拟软件VBOX，旨在将构造变形研究从定性推向定量。   硕士期间　 主要做土石混合体，图像处理MATLAB，网格划分（有限元、有限差分FLAC3D）等方面的工作    使用的语言 C、C++、Matlab、Python、Fortran、Shell\n使用的库 OpenMP、CUDA、GUI、QT、VTK、GTK+、GTKmm、OpenGL\n使用的软件 VBOX、GMT、PFC2D、FLAC3D、ANSYS\n"
+},
+{
+	"uri": "https://sheng.geovbox.com/en/credits/",
+	"title": "致谢",
+	"tags": [],
+	"description": "",
+	"content": "致谢 And a special thanks to @vjeantet for his work on docdock, a fork of hugo-theme-learn. v2.0.0 of this theme is inspired by his work.\nPackages and libraries  mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services\u0026hellip; horsey - Progressive and customizable autocomplete component clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don\u0026rsquo;t support  工具  Netlify - Continuous deployement and hosting of this documentation Hugo  "
+}]
